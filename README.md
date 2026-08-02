@@ -13,7 +13,7 @@ The safety layer for vibe coding.
 *In climbing, the belayer is the person holding your rope.
 They don't climb for you. They make sure a slip is never a fall.*
 
-`npx belay-skill` · one command · no config · works immediately
+`npx skills add thanathe/belay` · one command · no config · works immediately
 
 </div>
 
@@ -74,7 +74,7 @@ It just has to exist, because it's what makes "undo that" possible.
 Then:
 
 ```bash
-npx belay-skill
+npx skills add thanathe/belay
 ```
 
 That's the whole install. Restart Claude Code and it's on — Claude picks it up by itself
@@ -82,12 +82,12 @@ on any coding task. To check: ask Claude *"what skills do you have?"* To call it
 explicitly: `/belay`.
 
 ```bash
-npx belay-skill --project      # this project only, instead of everywhere
-npx belay-skill                # run again anytime to update
-npx belay-skill --uninstall    # remove
+npx skills add thanathe/belay -g   # everywhere, instead of just this project
+npx skills update                  # update later
+npx skills remove belay            # uninstall
 ```
 
-<sub>No Node/npx? The old way works the same:
+<sub>No Node/npx? Plain git works the same:
 `git clone https://github.com/thanathe/belay ~/.claude/skills/belay`</sub>
 
 ## What's inside
