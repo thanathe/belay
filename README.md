@@ -74,7 +74,7 @@ It just has to exist, because it's what makes "undo that" possible.
 Then:
 
 ```bash
-git clone https://github.com/<you>/belay ~/.claude/skills/belay
+git clone https://github.com/thanathe/belay ~/.claude/skills/belay
 ```
 
 That's the whole install. Restart Claude Code and it's on — Claude picks it up by itself
