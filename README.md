@@ -1,83 +1,119 @@
-# dev-buddy
+<div align="center">
 
-A Claude Code skill for people who build real software but are not full-time software
-developers — clinicians, founders, researchers, analysts.
+# 🧗 belay
 
-It does not teach you to code. It changes how Claude behaves while coding *for* you: smaller
-changes, a way back before anything risky, a confirmation before anything irreversible, and
-verification that something actually works instead of a claim that it does.
+**You climb. Claude holds the rope.**
 
-## What it changes
+A [Claude Code](https://claude.com/claude-code) skill for people who build real software
+but aren't software developers — dentists, lawyers, founders, researchers, analysts.
+The safety layer for vibe coding.
 
-| Without it | With it |
+*In climbing, the belayer is the person holding your rope.
+They don't climb for you. They make sure a slip is never a fall.*
+
+`git clone` · one folder · no config · works immediately
+
+</div>
+
+---
+
+## Why
+
+You can build real things with Claude Code now without being a developer. That part works.
+
+What doesn't work is what happens around the code: the confident **"Done!"** on something
+that was never run. The 200-line rewrite you can't review answering a 5-line request. The
+deploy that can't be rolled back because nothing was committed. The stack trace dumped in
+your lap. You are an expert — just in a different field. You'll catch a story that stops
+making sense; you won't catch an off-by-one in a diff. **belay** makes Claude act
+accordingly.
+
+It doesn't teach you to code, and it doesn't slow Claude down with hand-holding.
+It changes how Claude behaves when the person across the table can't check its work.
+
+## The five rules
+
+Once installed, Claude carries these through every coding session — you never invoke anything.
+
+|   | Rule | Meaning |
+|---|------|---------|
+| 🪢 | **Snapshot before you change** | Before touching anything that works, create the way back — and say what it is |
+| ✋ | **Confirm before anything irreversible** | Deploys, deletes, live-database writes: what happens, who it touches, how to undo — *then* wait. And nothing ships uncommitted |
+| 🔬 | **Smallest change that solves it** | A diff you can read is a safety property, not a style preference |
+| 👀 | **Verify — don't claim** | "Done" requires an observation behind it: the page loaded, the test passed, the output says so |
+| 🗣️ | **Translate errors — never dump them** | What it means, what caused it, what to do next. Raw trace below, for the record |
+
+And one meta-rule that outranks them: **when Claude isn't sure, it says so in that
+sentence** — because in this room, it's the only reviewer.
+
+## Before / after
+
+| Without belay | With belay |
 |---|---|
-| "Done! I've fixed the issue." | Ran it, here is the output, here is what still fails. |
-| A 200-line rewrite for a 5-line request | The smallest change that solves it; unrelated problems get mentioned, not fixed |
-| Deploys because you said "looks good" | States what goes live, who it affects, whether it can be undone — then waits |
-| Guesses at a cause and patches it | Reproduces it first, or says plainly that it cannot |
-| Pastes a stack trace at you | What it means, what caused it, what to do next |
-| Confident when it is unsure | Says "I think X but have not verified it" — in that sentence, not at the end |
+| "Done! I've fixed the issue." | Ran it — here's the output, here's what still fails |
+| Rewrites half the file | Changes 15 lines, *mentions* the other problems it saw |
+| Deploys because you said "looks good" | "This goes live for real patients and can't be undone. Proceed?" |
+| Patches a bug it never reproduced | Reproduces first — or says plainly that it can't |
+| Pastes a stack trace | Three lines: meaning → cause → next step |
+| Confidently wrong | "I think X, but I haven't verified it" |
 
 ## Install
 
-You need two things: [Claude Code](https://claude.com/claude-code), and git.
+Two prerequisites: **Claude Code** and **git**. Check git with `git --version` — if that
+prints a version, skip ahead. If not:
 
-To check whether you already have git, run `git --version` in a terminal. If it prints a
-version number you are set. If it says *command not found*:
+- **macOS** — running `git --version` offers to install the developer tools; say yes
+- **Windows** — [git-scm.com](https://git-scm.com/download/win), accept every default
+- **Linux** — `sudo apt install git` (or `dnf` on Fedora)
 
-- **macOS** — run `git --version` anyway; macOS offers to install the developer tools. Say yes.
-- **Windows** — install from [git-scm.com](https://git-scm.com/download/win), accepting every default.
-- **Linux** — `sudo apt install git`, or `sudo dnf install git` on Fedora.
-
-You do not need to *know* git. The skill has Claude set it up and run it for you, explaining
-each step as it goes. It just has to be installed — it is what makes "undo that" possible.
+You don't need to *know* git — Claude runs it for you and explains as it goes.
+It just has to exist, because it's what makes "undo that" possible.
 
 Then:
 
 ```bash
-git clone https://github.com/<you>/dev-buddy ~/.claude/skills/dev-buddy
+git clone https://github.com/<you>/belay ~/.claude/skills/belay
 ```
 
-That is the whole install. Start Claude Code (or restart it if already open) and it is
-active — Claude loads the skill by itself when you are working on code.
+That's the whole install. Restart Claude Code and it's on — Claude picks it up by itself
+on any coding task. To check: ask Claude *"what skills do you have?"* To call it
+explicitly: `/belay`. To uninstall: delete the folder.
 
-To confirm it is there: ask Claude *"what skills do you have?"* and look for `dev-buddy`.
-To invoke it deliberately at any point, type `/dev-buddy`.
+<sub>Want it in one project only? Clone into `<project>/.claude/skills/belay` instead.</sub>
 
-To use it in one project only rather than everywhere, clone into that project instead:
-
-```bash
-git clone https://github.com/<you>/dev-buddy .claude/skills/dev-buddy
-```
-
-To remove it: `rm -rf ~/.claude/skills/dev-buddy`
-
-## What is inside
+## What's inside
 
 ```
-SKILL.md                   the five rules — always loaded
-references/debugging.md    loaded when something is broken
-references/reviewing.md    loaded when reviewing a plan or a change
-references/recovery.md     loaded when a change made things worse
-references/git.md          loaded when there is no repo yet, or git is in the way
+SKILL.md                    the five rules — always on          🧗 on belay
+references/debugging.md     something is broken                 🩺 reproduce → isolate → falsify
+references/reviewing.md     "look this over first"              🔍 should it exist? does it do what it claims?
+references/recovery.md      a change made things worse          🪂 stop, roll back, then think
+references/git.md           no repo yet / git in the way        🪢 rope up, secrets stay out
 ```
 
-The reference files load only when relevant, so the always-on part stays small.
+The reference files load only when their moment comes, so the always-on part stays light.
 
-## What it does not do
+## What it is not
 
-It is a set of instructions Claude reads, not a lock on the door. Claude follows it well but
-it is not enforcement — if you need a hard block (for example, refusing `rm -rf` or a force
-push outright), that is a [hook](https://docs.claude.com/en/docs/claude-code/hooks) in your
-`settings.json`, and it works at a different level than this.
+**Not a lock.** It's instructions Claude follows, not enforcement. For hard blocks
+(refusing `rm -rf` outright), use [hooks](https://docs.claude.com/en/docs/claude-code/hooks) —
+different layer, composes fine with this one.
 
-It also has no opinion about your specific stack, host, or deploy process. Those belong in
-your project's `CLAUDE.md`. This skill is about how to work, not where.
+**Not project config.** It has no opinion on your stack or your deploy process — those
+belong in your project's `CLAUDE.md`. belay is about *how* to work, not *where*.
 
 ## Credit
 
-The debugging discipline follows the standard reproduce → isolate → falsify → cross-reference
-loop. The code-quality rules are adapted from [Andrej Karpathy's notes on where LLMs go wrong
-when writing code](https://x.com/karpathy/status/2015883857489522876).
+Debugging discipline: the classic reproduce → isolate → falsify → cross-reference loop.
+Code-quality rules adapted from [Karpathy's notes on where LLMs go wrong writing
+code](https://x.com/karpathy/status/2015883857489522876).
 
-MIT licensed. Fork it and make it yours — it is prose, and editing it is the point.
+MIT. Fork it and make it yours — it's prose; editing it is the point.
+
+---
+
+<div align="center">
+
+**"On belay?"** — *"Belay on."* — **"Climbing."**
+
+</div>
