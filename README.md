@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/banner.png" alt="A belayer on the ground holds the rope for a climber high on a sunset rock face" width="100%">
+
 # 🧗 belay
 
 **You climb. Claude holds the rope.**
