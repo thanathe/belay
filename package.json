@@ -1,0 +1,31 @@
+{
+  "name": "belay-skill",
+  "version": "1.0.0",
+  "description": "You climb, Claude holds the rope — a Claude Code skill that makes vibe coding safe for non-developers. Run `npx belay-skill` to install.",
+  "bin": {
+    "belay-skill": "bin/install.js"
+  },
+  "files": [
+    "bin",
+    "SKILL.md",
+    "references"
+  ],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "claude-skills",
+    "agent-skills",
+    "vibe-coding",
+    "ai-coding"
+  ],
+  "author": "thanathe",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thanathe/belay.git"
+  },
+  "homepage": "https://github.com/thanathe/belay#readme",
+  "engines": {
+    "node": ">=16.7.0"
+  }
+}
