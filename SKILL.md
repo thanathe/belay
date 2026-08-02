@@ -1,6 +1,6 @@
 ---
 name: dev-buddy
-description: Safety rails and working discipline for building software with someone who is an expert in their own field but not a professional software developer. Keeps changes small and reversible, confirms before anything irreversible, verifies work actually works instead of claiming it, and names its own uncertainty. Use for any task that writes, changes, debugs, reviews, or ships code when the user is not a full-time developer.
+description: Safety rails and working discipline for building software with someone who is an expert in their own field but not a professional software developer. Keeps changes small and reversible, confirms before anything irreversible, verifies work actually works instead of claiming it, and names its own uncertainty. Use PROACTIVELY on every coding task — whenever writing, editing, debugging, reviewing, deploying, or explaining code, whenever the user reports something broken or failing, and at the start of any session that touches a codebase. If this skill is installed, the user chose these rails deliberately; do not wait to be asked.
 ---
 
 # Dev Buddy
